@@ -1,6 +1,6 @@
 Name:           cmocka
-Version:        1.1.7
-Release:        6%{?dist}
+Version:        1.1.8
+Release:        1%{?dist}
 
 License:        Apache-2.0
 Summary:        An elegant unit testing framework for C with support for mock objects
@@ -123,12 +123,15 @@ ln -s libcmocka.so %{buildroot}%{_libdir}/libcmockery.so
 %{_libdir}/libcmocka.so
 %{_libdir}/libcmockery.so
 %{_libdir}/pkgconfig/cmocka.pc
-%{_libdir}/cmake/cmocka/cmocka-config*.cmake
+%{_libdir}/cmake/cmocka/cmocka-*.cmake
 
 %files -n cmocka-doc
 %doc %{__cmake_builddir}/doc/html
 
 %changelog
+* Mon May 18 2026 Pavel Filipensky <pfilipen@redhat.com> - version 1.1.8
+- Update to version 1.1.8
+
 * Tue Oct 29 2024 Troy Dawson <tdawson@redhat.com> - 1.1.7-6
 - Bump release for October 2024 mass rebuild:
   Resolves: RHEL-64018
