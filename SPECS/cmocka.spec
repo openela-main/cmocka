@@ -1,8 +1,8 @@
 Name:           cmocka
-Version:        1.1.5
-Release:        11%{?dist}
+Version:        1.1.8
+Release:        1%{?dist}
 
-License:        ASL 2.0
+License:        Apache-2.0
 Summary:        An elegant unit testing framework for C with support for mock objects
 URL:            https://cmocka.org
 
@@ -15,6 +15,8 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  glibc-devel
 BuildRequires:  gnupg2
+
+Obsoletes:      libcmocka-static < %{version}
 
 %description
 There are a variety of C unit testing frameworks available however many of them
@@ -65,12 +67,6 @@ preferable.
 
 This is the successor of Google's Cmockery.
 
-%package -n libcmocka-static
-Summary:        Lightweight library to simplify and generalize unit tests for C
-
-%description -n libcmocka-static
-Static version of the cmocka library.
-
 %package -n libcmocka-devel
 Summary:        Development headers for the cmocka library
 Requires:       libcmocka = %{version}-%{release}
@@ -119,9 +115,6 @@ ln -s libcmocka.so %{buildroot}%{_libdir}/libcmockery.so
 %license COPYING
 %{_libdir}/libcmocka.so.*
 
-%files -n libcmocka-static
-%{_libdir}/libcmocka-static.a
-
 %files -n libcmocka-devel
 %{_includedir}/cmocka.h
 %{_includedir}/cmocka_pbc.h
@@ -130,13 +123,15 @@ ln -s libcmocka.so %{buildroot}%{_libdir}/libcmockery.so
 %{_libdir}/libcmocka.so
 %{_libdir}/libcmockery.so
 %{_libdir}/pkgconfig/cmocka.pc
-%{_libdir}/cmake/cmocka/cmocka-config-version.cmake
-%{_libdir}/cmake/cmocka/cmocka-config.cmake
+%{_libdir}/cmake/cmocka/cmocka-*.cmake
 
 %files -n cmocka-doc
 %doc %{__cmake_builddir}/doc/html
 
 %changelog
+* Mon May 18 2026 Pavel Filipensky <pfilipen@redhat.com> - version 1.1.8
+- Update to version 1.1.8
+
 * Mon Aug 09 2021 Mohan Boddu <mboddu@redhat.com> - 1.1.5-11
 - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
   Related: rhbz#1991688
